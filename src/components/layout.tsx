@@ -1,10 +1,20 @@
-import { memo } from 'react';
+import { memo, type PropsWithChildren } from 'react';
+import Header from './Header';
 
-const Layout = () => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className="Layout">
-      <h2>Layout</h2>
+    <div className='bg-gradient-to-br from-background to-muted hind'>
+      <Header />
+      <main className='h-screen container mx-auto px-4 py-8'>
+        {children}
+      </main>
+      <footer className='border-t backdrop-blur supports-[backdrop-filter]:bg-black/60'>
+        <div className='container mx-auto px-4 text-center text-gray-400 py-8'>
+          <p>Made by Aminur Rahman</p>
+        </div>
+      </footer>
     </div>
+
   );
 };
 
