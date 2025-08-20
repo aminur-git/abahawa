@@ -1,6 +1,9 @@
+
+import CurentWeather from '@/components/curent-weather';
 import WeatherSkeleton from '@/components/loading-sceleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
+
 import { useGeoLocation } from '@/hooks/use-geoLocation';
 import { useForecastQuery, useReversGeocodeQuery, useWeatherQuery } from '@/hooks/use-weather';
 import { AlertCircle, MapPin, RefreshCw } from 'lucide-react';
@@ -86,7 +89,7 @@ const WeatherDashboard = () => {
 
             <div className='flex justify-between items-center'>
                 <h1 className='text-xl font-semibold
-                 tracking-tight'>আমার লোকেশন <span>{locationName?.local_names?.bn}</span></h1>
+                 tracking-tight'>আমার লোকেশন </h1>
 
                 <Button
                     variant={'outline'}
@@ -99,6 +102,17 @@ const WeatherDashboard = () => {
                 </Button>
             </div>
             {/* Current and hourly weather */}
+            <div className='grid gap-6'>
+                <div>
+                    {/* current weather */}
+                    <CurentWeather data={weatherQuery?.data} locationName={locationName} />
+                    {/* hourly weather */}
+                </div>
+                <div>
+                    {/* details */}
+                    {/* forecast */}
+                </div>
+            </div>
         </div>
     );
 };
