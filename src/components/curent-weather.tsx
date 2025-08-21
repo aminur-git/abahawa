@@ -21,25 +21,25 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
     console.log('location:', locationName)
 
     return (
-        <Card>
+        <Card className="flex-1">
             <CardContent className="p-6 anek ">
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-6 md:grid-cols-3 ">
 
-                    <div className="space-y-8">
+                    <div className="space-y-8 md:col-span-2">
                         <div className="space-y-2">
                             <div className="flex items-center">
-                                <h2 className="text-4xl font-medium ">
+                                <h2 className="text-2xl  font-medium ">
                                     {locationName
                                         ? locationName.local_names?.bn
                                         : data?.name}
                                 </h2>
                                 {locationName?.state && (
                                     <span className="flex gap-2 pl-4 text-muted-foreground">
-                                        | {locationName?.state},
-                                        <p className="text-muted-foreground ">{locationName?.country}</p>
+                                        {locationName?.state}
                                     </span>
                                 )}
                             </div>
+                            <p className="text-muted-foreground ">{locationName?.country}</p>
                         </div>
                         <div className="flex items-center gap-2">
                             <p className="text-7xl font-semibold tracking-tighter ">{formateTemp(temp)}</p>
@@ -74,6 +74,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
                                     <p className="text-muted-foreground text-sm">{speed} m/s</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div className=" flex justify-center items-center   ">

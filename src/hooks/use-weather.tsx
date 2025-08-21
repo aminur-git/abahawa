@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 export const WEATHER_KEYS = {
     weather: (coords: Coordinates) => ["weather", coords] as const,
     forecast: (coords: Coordinates) => ["forecast", coords] as const,
-    location: (coords: Coordinates) => ["forecast", coords] as const,
+    location: (coords: Coordinates) => ["location", coords] as const,
 }
 
 export function useWeatherQuery(coordinates: Coordinates | null) {

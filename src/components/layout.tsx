@@ -8,7 +8,7 @@ const Layout = ({ children }: PropsWithChildren) => {
       <main className='h-screen container mx-auto px-4 py-8'>
         {children}
       </main>
-      <footer className='border-t backdrop-blur supports-[backdrop-filter]:bg-black/60'>
+      <footer className=' border-t backdrop-blur supports-[backdrop-filter]:bg-black/60'>
         <div className='container mx-auto px-4 text-center text-gray-400 py-8'>
           <p>Made by Aminur Rahman</p>
         </div>
