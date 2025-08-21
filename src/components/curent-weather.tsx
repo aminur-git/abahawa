@@ -41,11 +41,11 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
                             </div>
                             <p className="text-muted-foreground ">{locationName?.country}</p>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-4">
                             <p className="text-7xl font-semibold tracking-tighter ">{formateTemp(temp)}</p>
                             <div className="flex flex-col items-center">
                                 <div className="space-y-1">
-                                    <p className="text-md font-medium text-muted-foreground">অনুভূত {formateTemp(feels_like)}</p>
+                                    <p className="text-md font-medium text-muted-foreground anek">অনুভূত হচ্ছে {formateTemp(feels_like)}</p>
                                 </div>
                                 <div className="flex gap-2 text-sm font-medium">
                                     <span className="flex items-center gap-1 text-blue-500">

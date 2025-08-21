@@ -26,16 +26,34 @@ const HourlyForecast = ({ data }: HourlyForecastProps) => {
             </CardHeader>
             <CardContent>
                 <div className='h-[200px] w-full'>
-                    <ResponsiveContainer width={"100%"} height={"100%"}>
-                        <LineChart data={chartData}>
-                            <XAxis dataKey={"time"} stroke='#888888' fontSize={12} tickLine={false} axisLine={false} />
-                            <YAxis dataKey={"temp"} stroke='#888888' fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}°`} />
-                            {/* Tooltip */}
+                    <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                            data={chartData}
+                            margin={{ top: 16, right: 24, bottom: 8, left: 12 }}
+                            style={{ overflow: 'visible' }}       // prevents edge clipping
+                        >
+                            <XAxis
+                                dataKey="time"
+                                stroke="#888888"
+                                fontSize={12}
+                                tickLine={false}
+                                axisLine={false}
+                                tickMargin={8}
+                            />
+                            <YAxis
+                                stroke="#888888"
+                                fontSize={12}
+                                tickLine={false}
+                                axisLine={false}
+                                tickFormatter={(v) => `${v}°`}
+                                tickMargin={8}
+                                domain={['dataMin-2', 'dataMax+2']} // vertical padding
+                            />
                             <Tooltip content={({ active, payload }) => {
                                 if (active && payload && payload.length) {
                                     return (
 
-                                        <div className='rounded-lg border bg-background p-2 shadow-sm '>
+                                        <div className='rounded-lg border bg-background p-4 shadow-sm '>
                                             <div className='grid grid-cols-2 gap-2 '>
                                                 <div className='flex flex-col'>
                                                     <span className='text-sm text-muted-foreground'>তাপমাত্রা</span>
@@ -53,13 +71,9 @@ const HourlyForecast = ({ data }: HourlyForecastProps) => {
                                 return null
                             }} />
 
-
-                            <Line type="monotone" dataKey="temp" stroke='#2563eb' strokeWidth={2} dot={false} />
-                            <Line type="linear" dataKey="feels" stroke='#64748b' strokeWidth={2} dot={false} strokeDasharray="5 5" />
-
-
+                            <Line type="monotone" dataKey="temp" stroke="#2563eb" strokeWidth={2} dot={false} />
+                            <Line type="linear" dataKey="feels" stroke="#64748b" strokeWidth={2} dot={false} strokeDasharray="5 5" />
                         </LineChart>
-
                     </ResponsiveContainer>
 
                 </div>
