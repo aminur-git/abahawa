@@ -1,5 +1,5 @@
 
-import CurentWeather from '@/components/curent-weather';
+import CurrentWeather from '@/components/curent-weather';
 import WeatherSkeleton from '@/components/loading-sceleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -29,7 +29,8 @@ const WeatherDashboard = () => {
 
 
 
-    if (locationLoading) {
+
+    if (locationLoading || locationQuery.isLoading || weatherQuery.isLoading || forecastQuery.isLoading) {
         return <WeatherSkeleton />
     }
 
@@ -67,6 +68,7 @@ const WeatherDashboard = () => {
 
     const locationName = locationQuery.data?.[0]
     console.log(locationName)
+    console.log(weatherQuery.data)
 
 
     if (weatherQuery.error || !forecastQuery.error) {
@@ -105,7 +107,7 @@ const WeatherDashboard = () => {
             <div className='grid gap-6'>
                 <div>
                     {/* current weather */}
-                    <CurentWeather data={weatherQuery?.data} locationName={locationName} />
+                    <CurrentWeather data={weatherQuery?.data} locationName={locationName} />
                     {/* hourly weather */}
                 </div>
                 <div>

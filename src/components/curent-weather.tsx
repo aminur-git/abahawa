@@ -3,55 +3,60 @@ import { memo } from "react";
 import { Card, CardContent } from "./ui/card";
 import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
-interface CurrentWeather {
+interface CurrentWeatherProps {
     data: WeatherData;
     locationName?: GeocodingResponse;
 }
 
-const CurrentWeather = ({ data, locationName }: CurrentWeather) => {
+const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
     const {
         weather: [currentWeather],
         main: { temp, feels_like, temp_min, temp_max, humidity },
         wind: { speed },
+
     } = data;
 
     const formateTemp = (temp: number) => `${Math.round(temp)}°`
+
+    console.log('location:', locationName)
 
     return (
         <Card>
             <CardContent className="p-6 anek ">
                 <div className="grid gap-6 md:grid-cols-2">
 
-                    <div className="space-y-4">
+                    <div className="space-y-8">
                         <div className="space-y-2">
                             <div className="flex items-center">
-                                <h2 className="text-2xl font-medium ">
+                                <h2 className="text-4xl font-medium ">
                                     {locationName
                                         ? locationName.local_names?.bn
-                                        : locationName?.name}
+                                        : data?.name}
                                 </h2>
                                 {locationName?.state && (
-                                    <span className="text-muted-foreground">
-                                        , {locationName?.state}
+                                    <span className="flex gap-2 pl-4 text-muted-foreground">
+                                        | {locationName?.state},
+                                        <p className="text-muted-foreground ">{locationName?.country}</p>
                                     </span>
                                 )}
                             </div>
-                            <p className="text-muted-foreground ">{locationName?.country}</p>
                         </div>
                         <div className="flex items-center gap-2">
                             <p className="text-7xl font-semibold tracking-tighter ">{formateTemp(temp)}</p>
-                            <div className="space-y-1">
-                                <p className="text-sm font-medium text-muted-foreground">অনুভূত {formateTemp(feels_like)}</p>
-                            </div>
-                            <div className="flex gap-2 text-sm font-medium">
-                                <span className="flex items-center gap-1 text-blue-500">
-                                    <ArrowDown />
-                                    {formateTemp(temp_min)}
-                                </span>
-                                <span className="flex items-center gap-1 text-red-500">
-                                    <ArrowUp />
-                                    {formateTemp(temp_max)}
-                                </span>
+                            <div className="flex flex-col items-center">
+                                <div className="space-y-1">
+                                    <p className="text-md font-medium text-muted-foreground">অনুভূত {formateTemp(feels_like)}</p>
+                                </div>
+                                <div className="flex gap-2 text-sm font-medium">
+                                    <span className="flex items-center gap-1 text-blue-500">
+                                        <ArrowDown className="w-4 h-4" />
+                                        {formateTemp(temp_min)}
+                                    </span>
+                                    <span className="flex items-center gap-1 text-red-500">
+                                        <ArrowUp className="w-4 h-4" />
+                                        {formateTemp(temp_max)}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
@@ -70,8 +75,14 @@ const CurrentWeather = ({ data, locationName }: CurrentWeather) => {
                                 </div>
                             </div>
                         </div>
-                        <div>
-
+                    </div>
+                    <div className=" flex justify-center items-center   ">
+                        <div className="max-w-[200px] relative flex flex-col items-center justify-center
+                        ">
+                            <img src={`http://openweathermap.org/img/wn/${currentWeather.icon}@4x.png`} className="h-full w-full object-contain" />
+                            <div className="absolute bottom-0 text-center">
+                                <span className="text-muted-foreground text-sm capitalize">{currentWeather.description}</span>
+                            </div>
                         </div>
                     </div>
 

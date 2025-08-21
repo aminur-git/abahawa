@@ -17,6 +17,7 @@ export function useGeoLocation() {
     })
 
     const getLocation = () => {
+
         setLocationData((prev) => ({ ...prev, isLoading: true, error: null }))
 
         if (!navigator.geolocation) {
@@ -73,6 +74,7 @@ export function useGeoLocation() {
     useEffect(() => {
         getLocation()
     }, [])
+
 
     return {
         ...locationData,
