@@ -62,42 +62,43 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
                 <CardTitle>
                     ৫ দিনের পূর্বাভাস
                 </CardTitle>
-                <CardContent>
-                    <div className='grid gap-4'>
-                        {nextDays.map((day) => {
-                            return <div className='anek grid md:grid-cols-3 items-center gap-4 rounded-lg border p-4' key={day.date}>
-                                <div>
-                                    <p className=" font-medium text-md ">{format(new Date(day.date * 1000), "EEE, MMM d")}</p>
-                                    <p className="text-muted-foreground text-sm capitalize">{day.weather.description}</p>
-                                </div>
-                                <div className='flex gap-2 text-sm font-medium'>
-                                    <span className="flex items-center gap-1 text-red-500">
-                                        <ArrowUp className="w-4 h-4" />
-                                        {formateTemp(day.temp_min)}
-                                    </span>
-                                    <span className="flex items-center gap-1 text-blue-500">
-                                        <ArrowDown className="w-4 h-4" />
-                                        {formateTemp(day.temp_max)}
-                                    </span>
-
-                                </div>
-                                <div className='flex gap-2 items-center justify-between'>
-                                    <span className='flex gap-2 items-center'>
-                                        <Droplets className='h-4 w-4 text-blue-500' />
-                                        <p className="text-muted-foreground text-sm">{day.humidity}%</p>
-                                    </span>
-                                    <span className='flex gap-2 items-center'>
-                                        <Wind className='h-4 w-4 text-blue-500' />
-                                        <p className="text-muted-foreground text-sm">{day.wind}m/s</p>
-                                    </span>
-                                </div>
-
+            </CardHeader>
+            <CardContent>
+                <div className='grid gap-4 '>
+                    {nextDays.map((day) => {
+                        return <div className='anek grid md:grid-cols-3 items-center gap-4 rounded-lg border p-4' key={day.date}>
+                            <div>
+                                <p className=" font-medium text-md ">{format(new Date(day.date * 1000), "EEE, MMM d")}</p>
+                                <p className="text-muted-foreground text-sm capitalize">{day.weather.description}</p>
+                            </div>
+                            <div className='flex gap-2 text-sm font-medium'>
+                                <span className="flex items-center gap-1 text-red-500">
+                                    <ArrowUp className="w-4 h-4" />
+                                    {formateTemp(day.temp_min)}
+                                </span>
+                                <span className="flex items-center gap-1 text-blue-500">
+                                    <ArrowDown className="w-4 h-4" />
+                                    {formateTemp(day.temp_max)}
+                                </span>
 
                             </div>
-                        })}
-                    </div>
-                </CardContent>
-            </CardHeader>
+                            <div className='flex gap-2 items-center justify-between'>
+                                <span className='flex gap-2 items-center'>
+                                    <Droplets className='h-4 w-4 text-blue-500' />
+                                    <p className="text-muted-foreground text-sm">{day.humidity}%</p>
+                                </span>
+                                <span className='flex gap-2 items-center'>
+                                    <Wind className='h-4 w-4 text-blue-500' />
+                                    <p className="text-muted-foreground text-sm">{day.wind}m/s</p>
+                                </span>
+                            </div>
+
+
+                        </div>
+                    })}
+                </div>
+            </CardContent>
+
         </Card>
     );
 };

@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { ModeToggle } from './mode-toggle';
 import { useTheme } from '@/assets/context/theme-provider';
+import CitySearch from './city-search';
 
 
 const Header = () => {
@@ -18,8 +19,8 @@ const Header = () => {
                     <span className={theme === "dark" ? 'bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text ' : 'bg-gradient-to-r from-cyan-800   to-blue-800 text-transparent bg-clip-text'}>আবহাওয়া</span>
                 </Link>
                 <div></div>
-                <div className='flex gap-4 items-center'>
-                    <h1>Search</h1>
+                <div className='flex justify-between gap-4 items-center'>
+                    <CitySearch />
                     <ModeToggle></ModeToggle>
                 </div>
             </div>
