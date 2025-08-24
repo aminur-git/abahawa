@@ -1,18 +1,18 @@
 import { memo, useState } from 'react';
 import { Button } from './ui/button';
-import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from './ui/command';
+import { CommandDialog, CommandItem } from './ui/command';
 import { Computer, Search } from 'lucide-react';
-import { useLocationSearch } from '@/hooks/use-weather';
+// import { useLocationSearch } from '@/hooks/use-weather';
 
 const CitySearch = () => {
 
     const [open, setOpen] = useState(false)
-    const [query, setQuery] = useState('')
+    // const [query, setQuery] = useState('')
 
 
-    const { data: locations, isLoading } = useLocationSearch(query)
+    // const { data: locations, isLoading } = useLocationSearch(query)
 
-    console.log("query:", query, "Locations", locations)
+    // console.log("query:", query, "Locations", locations)
 
 
     return (

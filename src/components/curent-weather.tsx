@@ -29,7 +29,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
                         <div className="space-y-2">
                             <div className="flex items-center">
                                 <h2 className="text-2xl  font-medium ">
-                                    {locationName.local_names?.bn ? locationName.local_names.bn : locationName?.name}
+                                    {locationName?.local_names?.bn ? locationName.local_names.bn : locationName?.name}
                                 </h2>
                                 {locationName?.state && (
                                     <span className="flex gap-2 pl-4 text-muted-foreground">

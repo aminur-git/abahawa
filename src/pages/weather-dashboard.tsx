@@ -1,4 +1,5 @@
 
+import type { ForecastData, WeatherData } from '@/api/types';
 import CurrentWeather from '@/components/curent-weather';
 import DetailsWeather from '@/components/details-weather';
 import HourlyForecast from '@/components/hourly-forecast';
@@ -111,15 +112,15 @@ const WeatherDashboard = () => {
             <div className='grid gap-6'>
                 <div className='flex flex-col md:flex-row gap-4'>
                     {/* current weather */}
-                    <CurrentWeather data={weatherQuery?.data} locationName={locationName} />
+                    <CurrentWeather data={weatherQuery?.data as WeatherData} locationName={locationName} />
 
-                    <HourlyForecast data={forecastQuery?.data} />
+                    <HourlyForecast data={forecastQuery?.data as ForecastData} />
                 </div>
                 <div className='grid gap-6 md:grid-cols-2 items-start'>
                     {/* details */}
-                    <DetailsWeather data={weatherQuery?.data} />
+                    <DetailsWeather data={weatherQuery?.data as WeatherData} />
                     {/* forecast */}
-                    <WeatherForecast data={forecastQuery?.data} />
+                    <WeatherForecast data={forecastQuery?.data as ForecastData} />
                 </div>
             </div>
         </div>
